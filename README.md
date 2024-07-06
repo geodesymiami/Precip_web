@@ -16,7 +16,8 @@ export MAPBOX_ACCESS_TOKEN=<your_mapbox_access_token>
 python run.py
 ```
 5. Open Website at the given address (chrome/safari)
-```127.0.0.1:5000
+```
+127.0.0.1:5000
 ```
 
 ### TODOS:
