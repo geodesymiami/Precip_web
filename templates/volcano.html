@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ volcano.name }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #images {
+            text-align: center; /* Center align the images */
+            margin-top: 20px; /* Add margin above the images */
+        }
+        .volcano-image {
+            max-width: 300px; /* Set max width for images */
+            margin: 10px; /* Add margin around images for spacing */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ volcano.name }}</h1>
+        </header>
+
+        <section id="images">
+            <h2>Images</h2>
+            <div class="row">
+                {% for image in images %}
+                <div class="col-md-4 mb-4">
+                    <img src="{{ image }}" alt="{{ volcano.name }} Image {{ loop.index }}" class="img-fluid volcano-image">
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="metadata">
+            <h2>Metadata</h2>
+        <table class="table table-striped mt-3">
+            <tr>
+                <th>ID</th>
+                <td>{{ volcano.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ volcano.name }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ volcano.country }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ volcano.type }}</td>
+            </tr>
+            <tr>
+                <th>Activity Evidence</th>
+                <td>{{ volcano.activity_evidence }}</td>
+            </tr>
+            <tr>
+                <th>Last Known Eruption</th>
+                <td>{{ volcano.last_known_eruption }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ volcano.region }}</td>
+            </tr>
+            <tr>
+                <th>Subregion</th>
+                <td>{{ volcano.subregion }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ volcano.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ volcano.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Elevation (m)</th>
+                <td>{{ volcano.elevation }}</td>
+            </tr>
+            <tr>
+                <th>Dominant Rock Type</th>
+                <td>{{ volcano.dominant_rock_type }}</td>
+            </tr>
+            <tr>
+                <th>Tectonic Setting</th>
+                <td>{{ volcano.tectonic_setting }}</td>
+            </tr>
+            <tr>
+                <th>Precipitation</th>
+                <td>{{ volcano.precip }}</td>
+            </tr>
+        </table>
+        <a href="/" class="btn btn-primary mt-3">Back to Map</a>
+    </div>
+</body>
+</html>
