@@ -57,7 +57,9 @@ img {
     background-color: transparent;
     border: none;
 }
-
+#map-logo img {
+    height: 50px; /* Adjust as needed */
+}
 #images {
     text-align: center; /* Center align the images */
     margin-top: 20px; /* Add margin above the images */
