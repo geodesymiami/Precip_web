@@ -60,6 +60,9 @@ img {
 #map-logo img {
     height: 50px; /* Adjust as needed */
 }
+#map-logo a {
+    text-decoration: none; /* Remove underline from the link */
+}
 #images {
     text-align: center; /* Center align the images */
     margin-top: 20px; /* Add margin above the images */
