@@ -71,3 +71,8 @@ img {
     max-width: 300px; /* Set max width for images */
     margin: 10px; /* Add margin around images for spacing */
 }
+/* GitHub logo size */
+#github-logo img {
+    height: 20px; /* Adjust the size as needed */
+    margin-top: 10px; /* Add some spacing above the GitHub logo */
+}
