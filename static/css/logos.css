@@ -15,6 +15,7 @@
 #map-logo a {
     text-decoration: none; /* Remove underline from the link */
 }
+
 /* GitHub logo size */
 #github-logo img {
     height: 20px; /* Adjust the size as needed */

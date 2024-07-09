@@ -2,6 +2,8 @@
 {% block content %}
 <head>
     <title>{{ volcano.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
 </head>
 <body>
     <div class="container">
@@ -22,7 +24,7 @@
 
         <section id="metadata">
             <h2>Metadata</h2>
-        <table class="table table-striped mt-3">
+        <table class="table">
             <tr>
                 <th>ID</th>
                 <td>
@@ -84,7 +86,10 @@
                 <td>{{ volcano.precip }}</td>
             </tr>
         </table>
-        <a href="/" class="btn btn-primary mt-3">Back to Map</a>
+        <div class="button-container">
+            <a href="/" class="btn btn-custom mt-3">Back to Map</a>
+        </div>
+        </section>
     </div>
 </body>
 {% endblock %}

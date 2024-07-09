@@ -4,7 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Interactive Volcano Map</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+    <!-- Logo element -->
+    <div id="map-logo">
+        <a href="https://geodesy.earth.miami.edu" target="_blank">
+            <img src="{{ url_for('static', filename='images/logo_geodesylab.png') }}" alt="Logo">
+        </a>
+    </div>
 </head>
 <body>
     <h1>Rain makes volcanoes go boom.</h1>

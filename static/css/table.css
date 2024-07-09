@@ -1,0 +1,12 @@
+/* Table styles */
+.table {
+    margin-top: 20px;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
