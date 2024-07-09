@@ -54,5 +54,8 @@ def volcano_detail(volcano_id):
 def get_volcanoes():
     return jsonify(volcanoes)
 
+@app.route('/list')
+def volcanoes_list():
+    return render_template('volcanoes_list.html', volcanoes=volcanoes)
 if __name__ == '__main__':
     app.run(debug=True)

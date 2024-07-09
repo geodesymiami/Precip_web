@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Volcano Map{% endblock %}</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <!-- Logo element -->
+    <div id="map-logo">
+        <a href="https://geodesy.earth.miami.edu" target="_blank">
+            <img src="{{ url_for('static', filename='images/logo_geodesylab.png') }}" alt="Logo">
+        </a>
+    </div>
 </head>
 <body>
     <header>
         <h1>rain rain go away</h1>
+        <nav class="navbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Map</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('volcanoes_list') }}">Volcanoes List</a></li>
+                <!-- Add more nav items as needed -->
+            </ul>
+        </nav>
     </header>
     <main>
         {% block content %}{% endblock %}

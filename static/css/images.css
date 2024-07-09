@@ -1,0 +1,8 @@
+#images {
+    text-align: center; /* Center align the images */
+    margin-top: 20px; /* Add margin above the images */
+}
+.volcano-image {
+    max-width: 300px; /* Set max width for images */
+    margin: 10px; /* Add margin around images for spacing */
+}

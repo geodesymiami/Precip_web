@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <main>
+        <ul>
+            {% for volcano in volcanoes %}
+                <li><a href="{{ url_for('volcano_detail', volcano_id=volcano.id) }}">{{ volcano.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+{% endblock %}

@@ -1,0 +1,22 @@
+#map-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000; /* Ensure it's above map controls */
+    padding: 10px;
+    border-radius: 5px;
+    /* Remove background color and border */
+    background-color: transparent;
+    border: none;
+}
+#map-logo img {
+    height: 50px; /* Adjust as needed */
+}
+#map-logo a {
+    text-decoration: none; /* Remove underline from the link */
+}
+/* GitHub logo size */
+#github-logo img {
+    height: 20px; /* Adjust the size as needed */
+    margin-top: 10px; /* Add some spacing above the GitHub logo */
+}
