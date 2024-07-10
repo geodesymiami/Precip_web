@@ -1,94 +1,90 @@
 {% extends "base.html" %}
 {% block content %}
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plots.css') }}">
     <title>{{ volcano.name }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>{{ volcano.name }}</h1>
-        </header>
-
-        <section id="images">
-            <h2>Images</h2>
-            <div class="row">
-                {% for image in images %}
-                <div class="col-md-4 mb-4">
-                    <img src="{{ image }}" alt="{{ volcano.name }} Image {{ loop.index }}" class="img-fluid volcano-image">
-                </div>
-                {% endfor %}
+    <div class="plot_container">
+        <h1>{{ volcano.name }}</h1>
+        <h2>Plots</h2>
+        {% for plots in rows %}
+        <div class="plot_row">
+            {% for title, plot in plots.items() %}
+            <div class="plot_column">
+                <h3>{{ title }}</h3>
+                <img src="{{ plot }}" alt="{{ volcano.id }} {{ title }} plot">
             </div>
-        </section>
-
+            {% endfor %}
+        </div>
+        {% endfor %}
         <section id="metadata">
             <h2>Metadata</h2>
-        <table class="table">
-            <tr>
-                <th>ID</th>
-                <td>
-                    <a href="https://volcano.si.edu/volcano.cfm?vn={{ volcano.id }}" target="_blank">
-                        {{ volcano.id }}
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ volcano.name }}</td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>{{ volcano.country }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ volcano.type }}</td>
-            </tr>
-            <tr>
-                <th>Activity Evidence</th>
-                <td>{{ volcano.activity_evidence }}</td>
-            </tr>
-            <tr>
-                <th>Last Known Eruption</th>
-                <td>{{ volcano.last_known_eruption }}</td>
-            </tr>
-            <tr>
-                <th>Region</th>
-                <td>{{ volcano.region }}</td>
-            </tr>
-            <tr>
-                <th>Subregion</th>
-                <td>{{ volcano.subregion }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ volcano.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ volcano.longitude }}</td>
-            </tr>
-            <tr>
-                <th>Elevation (m)</th>
-                <td>{{ volcano.elevation }}</td>
-            </tr>
-            <tr>
-                <th>Dominant Rock Type</th>
-                <td>{{ volcano.dominant_rock_type }}</td>
-            </tr>
-            <tr>
-                <th>Tectonic Setting</th>
-                <td>{{ volcano.tectonic_setting }}</td>
-            </tr>
-            <tr>
-                <th>Precipitation</th>
-                <td>{{ volcano.precip }}</td>
-            </tr>
-        </table>
-        <div class="button-container">
-            <a href="/" class="btn btn-custom mt-3">Back to Map</a>
-        </div>
+            <table class="table center-table">
+                <tr>
+                    <th>ID</th>
+                    <td>
+                        <a href="https://volcano.si.edu/volcano.cfm?vn={{ volcano.id }}" target="_blank">
+                            {{ volcano.id }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ volcano.name }}</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>{{ volcano.country }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ volcano.type }}</td>
+                </tr>
+                <tr>
+                    <th>Activity Evidence</th>
+                    <td>{{ volcano.activity_evidence }}</td>
+                </tr>
+                <tr>
+                    <th>Last Known Eruption</th>
+                    <td>{{ volcano.last_known_eruption }}</td>
+                </tr>
+                <tr>
+                    <th>Region</th>
+                    <td>{{ volcano.region }}</td>
+                </tr>
+                <tr>
+                    <th>Subregion</th>
+                    <td>{{ volcano.subregion }}</td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ volcano.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{{ volcano.longitude }}</td>
+                </tr>
+                <tr>
+                    <th>Elevation (m)</th>
+                    <td>{{ volcano.elevation }}</td>
+                </tr>
+                <tr>
+                    <th>Dominant Rock Type</th>
+                    <td>{{ volcano.dominant_rock_type }}</td>
+                </tr>
+                <tr>
+                    <th>Tectonic Setting</th>
+                    <td>{{ volcano.tectonic_setting }}</td>
+                </tr>
+                <tr>
+                    <th>Precipitation</th>
+                    <td>{{ volcano.precip }}</td>
+                </tr>
+            </table>
+            <div class="button-container">
+                <a href="/" class="btn btn-custom mt-3">Back to Map</a>
+            </div>
         </section>
     </div>
 </body>

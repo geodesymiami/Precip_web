@@ -3,10 +3,12 @@ from bs4 import BeautifulSoup
 from flask import Flask, render_template, jsonify, abort
 import json
 import os
+from collections import defaultdict
 
 app = Flask(__name__)
 # Read Mapbox access token from environment variable
 MAPBOX_ACCESS_TOKEN = os.getenv('MAPBOX_ACCESS_TOKEN')
+PLOT_BASE_URL = 'http://149.165.154.65/data/precip_plots/'
 
 @app.route('/')
 def index():
@@ -16,27 +18,15 @@ def index():
 with open('data/volcanoes.json') as f:
     volcanoes = json.load(f)['volcanoes']
 
-def fetch_volcano_images(volcano_name):
-    """
-    Fetches the list of image URLs for a given volcano.
-
-    Args:
-        volcano_name (str): The name of the volcano.
-
-    Returns:
-        list: A list of image URLs.
-    """
-    image_base_url = f'http://149.165.154.65/data/HDF5EOS/precip_products/{volcano_name}/'
-    images = []
-
-    try:
-        response = requests.get(image_base_url)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, 'html.parser')
-        images = [image_base_url + node.get('href') for node in soup.find_all('a') if node.get('href').endswith( '.png')]
-    except requests.RequestException as e:
-        print(f"Error fetching images for {volcano_name}: {e}")
-    return images
+def fetch_volcano_plots(volcano_id):
+    base_url = f'{PLOT_BASE_URL}/{volcano_id}/'
+    rows =[ 
+        {'Map': f'{base_url}{volcano_id}_map.png',
+         'Annual': f'{base_url}{volcano_id}_annual.png'},
+        {'Strength': f'{base_url}{volcano_id}_strength.png',
+        'Bar': f'{base_url}{volcano_id}_bar.png'}
+    ]
+    return rows
 
 @app.route('/volcano/<int:volcano_id>')
 def volcano_detail(volcano_id):
@@ -45,17 +35,20 @@ def volcano_detail(volcano_id):
     if not volcano:
         abort(404, description="Volcano not found")
 
-    # Fetch the images using the helper function
-    images = fetch_volcano_images(volcano['name'])
+    # Fetch the plots using the helper function
+    rows = fetch_volcano_plots(volcano['id'])
 
-    return render_template('volcano.html', volcano=volcano, images=images)
+    return render_template('volcano.html', volcano=volcano, rows=rows)
 
 @app.route('/api/volcanoes')
 def get_volcanoes():
     return jsonify(volcanoes)
 
-@app.route('/list')
+@app.route('/volcanoes')
 def volcanoes_list():
+    # Assuming `get_volcanoes` is a function that retrieves all volcano data
+    
     return render_template('volcanoes_list.html', volcanoes=volcanoes)
+
 if __name__ == '__main__':
     app.run(debug=True)

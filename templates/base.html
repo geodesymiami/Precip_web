@@ -3,38 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Volcano Map{% endblock %}</title>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+    <title>{% block title %}Volcano Map{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/logos.css') }}">
-    <!-- Logo element -->
-    <div id="map-logo">
-        <a href="https://geodesy.earth.miami.edu" target="_blank">
-            <img src="{{ url_for('static', filename='images/logo_geodesylab.png') }}" alt="Logo">
-        </a>
-    </div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
 </head>
+
 <body>
     <header>
-        <h1>rain rain go away</h1>
-        <nav class="navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Map</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url_for('volcanoes_list') }}">Volcanoes List</a></li>
-                <!-- Add more nav items as needed -->
-            </ul>
-        </nav>
+        <div class="header-content">
+            <div class="title-and-toggle">
+                <button id="navbar-toggle" aria-label="Toggle navigation">
+                    ☰
+                </button>
+                <h1>Rain rain go away</h1>
+            </div>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var navbarToggle = document.getElementById('navbar-toggle');
+                var navbar = document.querySelector('.navbar');
+
+                navbarToggle.addEventListener('click', function() {
+                    navbar.classList.toggle('active');
+                });
+            });
+            </script>
+            <div id="um-logo">
+                <a href="https://geodesy.earth.miami.edu" target="_blank">
+                    <img src="{{ url_for('static', filename='images/logo_geodesylab.png') }}" alt="Logo">
+                </a>
+            </div>
+            <nav class="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Map</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('volcanoes_list') }}">Volcanoes List</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         {% block content %}{% endblock %}
     </main>
     <footer>
-        <p>&copy; 2024 Volcano Map</p>
+        <div class="footer-content">
+            <p>&copy; 2024 Volcano Map</p>
+            <a href="https://github.com/geodesymiami" target="_blank" id="github-logo">
+                <img src="{{ url_for('static', filename='images/github-mark-white.png') }}" alt="GitHub">
+            </a>
+            </div>
         <p>Website made by Kawan Amelung</p>
-        <a href="https://github.com/geodesymiami" target="_blank" id="github-logo">
-            <img src="{{ url_for('static', filename='images/github-mark-white.png') }}" alt="GitHub">
-        </a>
     </footer>
 </body>
 </html>

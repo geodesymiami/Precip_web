@@ -1,40 +1,192 @@
-body {
-    font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('variables.css');
+html, body {
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
+    height: 100%; /* ensure full viewport height */
+    background-color: var(--main-bg-color);
+    }
 
+main {
+    flex: 1; /* fill remaining space */
+    background-color: white;
+
+}
 header {
     width: 100%;
     background: #333;
     color: white;
     padding: 1em 0;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* ensure relative positioning for absolute child */
+    background-color: var(--main-bg-color);
 }
 
-main {
+
+.title-and-toggle {
+    display: flex;
+    align-items: center;
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; /* space between h1 and #um-logo */ */
     width: 80%;
-    margin: 20px 0;
+    max-width: 1200px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+h1 {
+    margin: 0;
+    text-align: center; /* center text within its container */
+}
+/* navbar styles */
+.navbar {
+    background-color: #333; /* dark background color */
+    margin-top: 15px; /* optional margin bottom for space below navbar */
+}
+
+/* Show navbar when active */
+.navbar.active {
+    display: flex; /* Show the navbar */
+}
+.navbar-nav {
+    list-style-type: none; /* remove default list styling */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    display: inline-block; /* display items in a line */
+    margin-right: 20px; /* spacing between nav items */
+}
+
+.nav-link {
+    color: white; /* text color */
+    text-decoration: none; /* remove underline from links */
+    padding: 10px 15px; /* padding inside each nav item */
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.nav-link:hover {
+    background-color: #555; /* darker background color on hover */
+}
+
+#navbar-toggle {
+    display: none; /* Show the toggle button */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 10px; /* Space between button and title */
+}
+#um-logo {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+#um-logo img {
+    height: 40px;
+    /* transform: translatey(100%); /* center vertically */ */
+}
+
+#map {
+    height: 100%;
 }
 
 footer {
     width: 100%;
-    background: #333;
+    background-color: var(--main-bg-color);
     color: white;
-    padding: 1em 0;
+    /* padding: 1em 0; */
     text-align: center;
-    position: fixed;
     bottom: 0;
+    margin-top: auto; /* Push footer to the bottom */
 }
 
-h1 {
-    margin: 20px 0;
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; /* optional margin top for space above footer content */
+}
+.footer-content p {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+#github-logo img {
+    height: 24px;
+    width: auto;
+    margin-left: 5px; /* Adjust margin as needed */
+}
+
+@media (max-width: 920px) {
+    #um-logo {
+        display: none; /* Hide logo */
+    }
+}
+@media (max-width: 850px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #navbar-toggle {
+        display: block; /* Show the toggle button */
+    }
+    .navbar {
+        display: none; /* Hide navbar by default */
+        flex-direction: column; /* Stack items vertically */
+        width: 100%;
+    }
+
+    .navbar-nav {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 10px 0; /* Margin for vertical spacing */
+        display: grid
+    }
+
+    #map {
+        height: calc(100vh - header height)
+    }
+   footer {
+        display: none;
+    }
+}
+/* Hide footer on screens with vertical height below 500px */
+@media (max-height: 500px) {
+    footer {
+        display: none;
+    }
+    #navbar-toggle {
+        display: block; /* Show the toggle button */
+    }
+    .navbar {
+        display: none; /* Hide navbar by default */
+        flex-direction: column; /* Stack items vertically */
+        width: 100%;
+    }
+
+    .navbar-nav {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 10px 0; /* Margin for vertical spacing */
+        display: grid
+    }
 }

@@ -33,8 +33,8 @@ python run.py
 - [x] Add UM GeodesyLab logo
 - [x] Add a hover effect over points on the map
 - [x] Add volcano metadata on <volcano id> page
-- [ ] Add a link to the volcano's smithsonian page
-- [ ] Add a separate page for the volcano list (by country)
+- [x] Add a link to the volcano's smithsonian page
+- [x] Add a separate page for the volcano list (by country)
 - [ ] Add a search bar to search for volcanoes ?
 - [ ] Indicate the last time the data was updated and plot was generated
 

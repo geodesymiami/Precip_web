@@ -1,26 +1,15 @@
 {% extends "base.html" %}
-
 {% block content %}
 <head>
     <meta charset="UTF-8">
     <title>Interactive Volcano Map</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
-    <!-- Logo element -->
-    <div id="map-logo">
-        <a href="https://geodesy.earth.miami.edu" target="_blank">
-            <img src="{{ url_for('static', filename='images/logo_geodesylab.png') }}" alt="Logo">
-        </a>
-    </div>
 </head>
 <body>
-    <h1>Rain makes volcanoes go boom.</h1>
-    <div id="map-container"></div>
-        <div id="map"></div>
+    <!-- <h1>Rain makes volcanoes go boom.</h1> -->
+    <div id="map">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+        <script> var mapboxAccessToken = "{{ mapbox_access_token }}"; </script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </div>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
-    <script>
-        var mapboxAccessToken = "{{ mapbox_access_token }}";
-    </script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 {% endblock %}

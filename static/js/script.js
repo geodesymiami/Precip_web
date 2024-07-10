@@ -56,3 +56,4 @@ fetch('/api/volcanoes')
   .catch(error => {
     console.error('Error fetching volcano data:', error);
   });
+

@@ -1,0 +1,34 @@
+img {
+    max-width: 100%; /* Ensure images don't exceed their container width */
+}
+.plot_container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+.plot_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the rows horizontally */
+    margin: -10px;
+}
+.plot_column {
+    flex: 1 1 calc(50% - 20px); /* Each column takes up 50% of the width minus margin */
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: center; /* Center the content within each column */
+}
+.plot_column img {
+    width: 100%; /* Ensure images fit within their columns */
+    height: auto;
+    display: block;
+}
+.plot_column h3 {
+    text-align: center;
+    margin: 10px 0;
+}
+@media (max-width: 768px) {
+    .plot_column {
+        flex: 1 1 100%; /* Each column takes up 100% width on smaller screens */
+    }
+}

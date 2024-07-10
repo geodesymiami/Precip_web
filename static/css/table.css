@@ -1,12 +1,64 @@
-/* Table styles */
 .table {
     margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .table th, .table td {
     vertical-align: middle;
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
 .table th {
     background-color: #f8f9fa;
+    text-align: left;
+}
+.center-table {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.center-table .table {
+    width: auto; /* Adjust this to fit your design needs */
+}
+.container {
+    max-width: 900px; /* Set a maximum width for the container */
+    margin: 0 auto;   /* Center the container */
+    padding: 20px;
+}
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    float: left;
+    text-align: left;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    margin-top: 0.5em;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 1em;
+}
+
+th.sorting:after, th.sorting_asc:after, th.sorting_desc:after {
+    content: " \25B4\25BE";
+    float: right;
+    margin-left: 10px;
+    font-size: 0.8em;
+}
+
+th.sorting:after {
+    color: #ddd;
+}
+
+th.sorting_asc:after {
+    color: #333;
+}
+
+th.sorting_desc:after {
+    color: #333;
 }
