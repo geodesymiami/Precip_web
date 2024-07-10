@@ -14,42 +14,54 @@ var map = new mapboxgl.Map({
 // Create a single popup instance to reuse for hover
 var hoverPopup = new mapboxgl.Popup({
   closeButton: false,
-  closeOnClick: false
+  closeOnClick: false,
+  offset: [0, -40] // Adjust offset to move the popup up or down (x, y)
 });
+
+// Track the active popup and timeout
+let popupTimeout;
 
 // Fetch volcano data from the API and add to the map
 fetch('/api/volcanoes')
   .then(response => response.json())
   .then(data => {
     data.forEach(volcano => {
-      // Create a marker for each volcano
-      var marker = new mapboxgl.Marker()
+      // Create a wrapper div around the default marker
+      var wrapperDiv = document.createElement('div');
+      wrapperDiv.className = 'marker-wrapper';
+
+      // Create a default marker
+ var marker = new mapboxgl.Marker({
+        color: '#f47321' // Replace with your desired hex color code
+      })
         .setLngLat([volcano.longitude, volcano.latitude])
         .addTo(map);
 
-      // Flag to track hover state
-      let isHovered = false;
+      // Append the marker's element to the wrapper div
+      wrapperDiv.appendChild(marker.getElement());
+
+      // Add the wrapper div to the map
+      map.getCanvasContainer().appendChild(wrapperDiv);
 
       // Add click event to redirect to volcano detail page
-      marker.getElement().addEventListener('click', () => {
+      wrapperDiv.addEventListener('click', () => {
         window.location.href = `/volcano/${volcano.id}`;
       });
 
       // Add hover events to show the name of the volcano
-      marker.getElement().addEventListener('mouseenter', () => {
-        if (!isHovered) {
-          hoverPopup
-            .setLngLat([volcano.longitude, volcano.latitude])
-            .setText(volcano.name)
-            .addTo(map);
-          isHovered = true;
-        }
+      wrapperDiv.addEventListener('mouseenter', () => {
+        clearTimeout(popupTimeout); // Clear any existing timeout
+        hoverPopup
+          .setLngLat([volcano.longitude, volcano.latitude])
+          .setText(volcano.name)
+          .addTo(map);
       });
 
-      // Remove popup on mouse leave
-      marker.getElement().addEventListener('mouseleave', () => {
-        hoverPopup.remove();
-        isHovered = false;
+      // Delay removing popup on mouse leave to prevent flickering
+      wrapperDiv.addEventListener('mouseleave', () => {
+        popupTimeout = setTimeout(() => {
+          hoverPopup.remove();
+        }, 50); // Adjust the delay as needed
       });
     });
   })
@@ -57,3 +69,15 @@ fetch('/api/volcanoes')
     console.error('Error fetching volcano data:', error);
   });
 
+// Add CSS styles (optional, adjust as needed)
+var style = document.createElement('style');
+style.type = 'text/css';
+style.innerHTML = `
+  .marker-wrapper {
+    position: absolute;
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    cursor: pointer; /* Change cursor on hover */
+  }
+`;
+document.getElementsByTagName('head')[0].appendChild(style);
