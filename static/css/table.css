@@ -4,7 +4,8 @@
     border-collapse: collapse;
 }
 
-.table th, .table td {
+.table th,
+.table td {
     vertical-align: middle;
     border: 1px solid #ddd;
     padding: 8px;
@@ -14,6 +15,7 @@
     background-color: #f8f9fa;
     text-align: left;
 }
+
 .center-table {
     display: flex;
     justify-content: center;
@@ -21,13 +23,18 @@
 }
 
 .center-table .table {
-    width: auto; /* Adjust this to fit your design needs */
+    width: auto;
+    /* Adjust this to fit your design needs */
 }
+
 .container {
-    max-width: 900px; /* Set a maximum width for the container */
-    margin: 0 auto;   /* Center the container */
+    max-width: 900px;
+    /* Set a maximum width for the container */
+    margin: 0 auto;
+    /* Center the container */
     padding: 20px;
 }
+
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter,
 .dataTables_wrapper .dataTables_info,
@@ -44,7 +51,9 @@
     margin-bottom: 1em;
 }
 
-th.sorting:after, th.sorting_asc:after, th.sorting_desc:after {
+th.sorting:after,
+th.sorting_asc:after,
+th.sorting_desc:after {
     content: " \25B4\25BE";
     float: right;
     margin-left: 10px;

@@ -1,92 +1,89 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import url('variables.css');
-html, body {
-    font-family: 'Roboto', Arial, sans-serif;
+:root {
+    --main-bg-color: #333;
+    --main-font: 'Montserrat';
+}
+
+html,
+body {
+    font-family: var(--main-font);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    height: 100%; /* ensure full viewport height */
+    height: 100%;
     background-color: var(--main-bg-color);
-    }
+}
 
 main {
-    flex: 1; /* fill remaining space */
+    flex: 1;
     background-color: white;
-
 }
+
 header {
     width: 100%;
-    background: #333;
     color: white;
     padding: 1em 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* ensure relative positioning for absolute child */
+    position: relative;
     background-color: var(--main-bg-color);
 }
-
 
 .title-and-toggle {
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
+
 .header-content {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; /* space between h1 and #um-logo */ */
     width: 80%;
-    max-width: 1200px;
     flex-direction: column;
-    align-items: flex-start;
 }
 
 h1 {
     margin: 0;
-    text-align: center; /* center text within its container */
-}
-/* navbar styles */
-.navbar {
-    background-color: #333; /* dark background color */
-    margin-top: 15px; /* optional margin bottom for space below navbar */
 }
 
-/* Show navbar when active */
-.navbar.active {
-    display: flex; /* Show the navbar */
+.navbar {
+    margin-top: 15px;
 }
+
+.navbar.active {
+    display: flex;
+}
+
 .navbar-nav {
-    list-style-type: none; /* remove default list styling */
     margin: 0;
     padding: 0;
 }
 
 .nav-item {
-    display: inline-block; /* display items in a line */
-    margin-right: 20px; /* spacing between nav items */
+    display: inline-block;
 }
 
 .nav-link {
-    color: white; /* text color */
-    text-decoration: none; /* remove underline from links */
-    padding: 10px 15px; /* padding inside each nav item */
-    font-family: 'Roboto', Arial, sans-serif;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
 }
 
 .nav-link:hover {
-    background-color: #555; /* darker background color on hover */
+    background-color: #555;
 }
 
 #navbar-toggle {
-    display: none; /* Show the toggle button */
+    display: none;
     background: none;
     border: none;
     color: white;
     font-size: 1.5em;
     cursor: pointer;
-    margin-right: 10px; /* Space between button and title */
 }
+
 #um-logo {
     position: absolute;
     top: 30px;
@@ -95,7 +92,7 @@ h1 {
 
 #um-logo img {
     height: 40px;
-    /* transform: translatey(100%); /* center vertically */ */
+    /* transform: translateY(-100%); */
 }
 
 #map {
@@ -106,87 +103,103 @@ footer {
     width: 100%;
     background-color: var(--main-bg-color);
     color: white;
-    /* padding: 1em 0; */
     text-align: center;
     bottom: 0;
-    margin-top: auto; /* Push footer to the bottom */
+    margin-top: auto;
 }
 
 .footer-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px; /* optional margin top for space above footer content */
+    margin-top: 10px;
 }
+
 .footer-content p {
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+    margin: 0;
+    padding: 0;
 }
 
 #github-logo img {
     height: 24px;
     width: auto;
-    margin-left: 5px; /* Adjust margin as needed */
+    margin-left: 5px;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1000px) {
     #um-logo {
-        display: none; /* Hide logo */
+        display: none;
     }
 }
+
 @media (max-width: 850px) {
+    .title-and-toggle {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
     .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #navbar-toggle {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .navbar-nav {
         flex-direction: column;
         align-items: center;
     }
 
-    #navbar-toggle {
-        display: block; /* Show the toggle button */
-    }
-    .navbar {
-        display: none; /* Hide navbar by default */
-        flex-direction: column; /* Stack items vertically */
-        width: 100%;
-    }
-
-    .navbar-nav {
-        flex-direction: column; /* Stack nav items vertically */
-        align-items: center;
-    }
-
     .nav-item {
-        margin: 10px 0; /* Margin for vertical spacing */
-        display: grid
+        display: grid;
     }
 
     #map {
-        height: calc(100vh - header height)
+        height: calc(100vh - header height);
     }
-   footer {
-        display: none;
-    }
-}
-/* Hide footer on screens with vertical height below 500px */
-@media (max-height: 500px) {
+
     footer {
         display: none;
     }
-    #navbar-toggle {
-        display: block; /* Show the toggle button */
+}
+
+@media (max-height: 500px) {
+    #um-logo {
+        display: none;
     }
+
+    .title-and-toggle {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+
+    footer {
+        display: none;
+    }
+
+    #navbar-toggle {
+        display: block;
+    }
+
     .navbar {
-        display: none; /* Hide navbar by default */
-        flex-direction: column; /* Stack items vertically */
+        display: none;
+        flex-direction: column;
         width: 100%;
     }
 
     .navbar-nav {
-        flex-direction: column; /* Stack nav items vertically */
+        flex-direction: column;
         align-items: center;
     }
 
     .nav-item {
-        margin: 10px 0; /* Margin for vertical spacing */
-        display: grid
+        display: grid;
     }
 }

@@ -6,20 +6,20 @@
 </head>
 <body>
     <div class="plot_container">
-        <h1>{{ volcano.name }}</h1>
-        <h2>Plots</h2>
+        <h2>{{ volcano.name }}</h2>
+        <h3>Plots</h3>
         {% for plots in rows %}
         <div class="plot_row">
             {% for title, plot in plots.items() %}
             <div class="plot_column">
-                <h3>{{ title }}</h3>
-                <img src="{{ plot }}" alt="{{ volcano.id }} {{ title }} plot">
+                <h4>{{ title }}</h4>
+                <img src="{{ plot }}" alt="{{ volcano.id }}_{{ title.lower() }}_plot">
             </div>
             {% endfor %}
         </div>
         {% endfor %}
         <section id="metadata">
-            <h2>Metadata</h2>
+            <h3>Metadata</h3>
             <table class="table center-table">
                 <tr>
                     <th>ID</th>
