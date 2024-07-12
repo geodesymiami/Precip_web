@@ -31,7 +31,7 @@ fetch('/api/volcanoes')
       wrapperDiv.className = 'marker-wrapper';
 
       // Create a default marker
- var marker = new mapboxgl.Marker({
+      var marker = new mapboxgl.Marker({
         color: '#f47321' // Replace with your desired hex color code
       })
         .setLngLat([volcano.longitude, volcano.latitude])
@@ -62,6 +62,22 @@ fetch('/api/volcanoes')
         popupTimeout = setTimeout(() => {
           hoverPopup.remove();
         }, 50); // Adjust the delay as needed
+      });
+
+      // Add touch events to show the name of the volcano on mobile devices
+      wrapperDiv.addEventListener('touchstart', () => {
+        clearTimeout(popupTimeout); // Clear any existing timeout
+        hoverPopup
+          .setLngLat([volcano.longitude, volcano.latitude])
+          .setText(volcano.name)
+          .addTo(map);
+      });
+
+      // Remove popup on touchend (optional: you can adjust behavior as needed)
+      wrapperDiv.addEventListener('touchend', () => {
+        popupTimeout = setTimeout(() => {
+          hoverPopup.remove();
+        }, 2000); // Keep the popup visible for a while on touchend
       });
     });
   })
