@@ -8,7 +8,7 @@ from collections import defaultdict
 app = Flask(__name__)
 # Read Mapbox access token from environment variable
 MAPBOX_ACCESS_TOKEN = os.getenv('MAPBOX_ACCESS_TOKEN')
-PLOT_BASE_URL = 'http://149.165.154.65/data/precip_plots/'
+PLOT_BASE_URL = 'http://149.165.154.65/data/HDF5EOS/precip_products/precip_plots/'
 
 @app.route('/')
 def index():
