@@ -7,7 +7,6 @@
 <body>
     <div class="plot_container">
         <h2>{{ volcano.name }}</h2>
-        <h3>Plots</h3>
         {% for plots in rows %}
         <div class="plot_row">
             {% for title, plot in plots.items() %}

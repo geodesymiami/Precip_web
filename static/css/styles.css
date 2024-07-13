@@ -1,6 +1,7 @@
 :root {
     --main-bg-color: #333;
     --main-font: 'Montserrat';
+    --header-height: 100px;
 }
 
 html,
@@ -21,13 +22,23 @@ main {
 
 header {
     width: 100%;
-    color: white;
-    padding: 1em 0;
+    height: var(--header-height);
+    /* color: white; */
+    /* padding: 1em 0; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* position: relative; */
+    /* background-color: var(--main-bg-color); */
+}
+
+
+.header-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-    background-color: var(--main-bg-color);
+    width: 80%;
 }
 
 .title-and-toggle {
@@ -35,13 +46,6 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%;
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    flex-direction: column;
 }
 
 h1 {
@@ -88,11 +92,11 @@ h1 {
 
 #um-logo img {
     height: 40px;
-    /* transform: translateY(-100%); */
 }
 
 #map {
     height: 100%;
+    z-index: 2;
 }
 
 footer {
@@ -128,56 +132,41 @@ footer {
     }
 }
 
-@media (max-width: 850px) {
-    .title-and-toggle {
-        flex-direction: row;
-        justify-content: space-between;
+@media (max-width: 850px) or (max-height: 500px) {
+    :root {
+        --header-height: 50px;
     }
 
-    .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #navbar-toggle {
-        display: block;
-    }
-
-    .navbar {
-        display: none;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-item {
-        display: grid;
-    }
-
-    #map {
-        height: calc(100vh - header height);
-    }
-
-    footer {
-        display: none;
-    }
-}
-
-@media (max-height: 500px) {
     #um-logo {
         display: none;
     }
 
+    .header-content {
+        flex-direction: column;
+        align-items: end;
+    }
+
     .title-and-toggle {
         flex-direction: row;
         justify-content: space-between;
     }
 
-
-    footer {
+    .navbar {
+        position: fixed;
+        top: var(--header-height);
+        background-color: var(--main-bg-color);
+        /* Ensure it appears above other content */
         display: none;
+        z-index: 3;
+        /* Hide initially on small screens */
+    }
+
+    .navbar.active {
+        display: flex;
+        /* Show when active */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     #navbar-toggle {
@@ -186,16 +175,50 @@ footer {
 
     .navbar {
         display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        align-items: center;
     }
 
     .nav-item {
         display: grid;
+        justify-content: right;
+    }
+
+
+    footer {
+        display: none;
     }
 }
+
+/* @media (max-height: 500px) { */
+/*     #um-logo { */
+/*         display: none; */
+/*     } */
+/**/
+/*     .title-and-toggle { */
+/*         flex-direction: row; */
+/*         justify-content: space-between; */
+/*     } */
+/**/
+/**/
+/*     footer { */
+/*         display: none; */
+/*     } */
+/**/
+/*     #navbar-toggle { */
+/*         display: block; */
+/*     } */
+/**/
+/*     .navbar { */
+/*         display: none; */
+/*         flex-direction: column; */
+/*         width: 100%; */
+/*     } */
+/**/
+/*     .navbar-nav { */
+/*         flex-direction: column; */
+/*         align-items: center; */
+/*     } */
+/**/
+/*     .nav-item { */
+/*         display: grid; */
+/*     } */
+/* } */
