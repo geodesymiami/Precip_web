@@ -39,7 +39,20 @@ print('# of volcanoes with precip:', len(volcanoes))
 volcano_data = {
     'volcanoes': volcanoes
 }
+
+
+print()
 print(volcanoes[0])
+
+
+# fix name if it has a comma
+for volcano in volcanoes:
+    name = volcano['name']
+    if ',' in name:
+        name = name.split(',')[::-1]
+        name = [part.strip() for part in name]
+        volcano['name'] = ' '.join(name)
+
 # move the json file to the data directory
 # Write the JSON data to a file
 json_file = 'data/volcanoes.json'

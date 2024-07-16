@@ -18,7 +18,7 @@
         },
         {
             "id": 233020,
-            "name": "Fournaise, Piton de la",
+            "name": "Piton de la Fournaise",
             "country": "France",
             "type": "Shield",
             "activity_evidence": "Eruption Observed",
@@ -306,7 +306,7 @@
         },
         {
             "id": 353050,
-            "name": "Negra, Sierra",
+            "name": "Sierra Negra",
             "country": "Ecuador",
             "type": "Shield",
             "activity_evidence": "Eruption Observed",
@@ -322,7 +322,7 @@
         },
         {
             "id": 353060,
-            "name": "Azul, Cerro",
+            "name": "Cerro Azul",
             "country": "Ecuador",
             "type": "Shield",
             "activity_evidence": "Eruption Observed",
@@ -370,7 +370,7 @@
         },
         {
             "id": 354010,
-            "name": "Misti, El",
+            "name": "El Misti",
             "country": "Peru",
             "type": "Stratovolcano",
             "activity_evidence": "Eruption Observed",
