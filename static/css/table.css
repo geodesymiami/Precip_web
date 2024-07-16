@@ -1,7 +1,10 @@
 .table {
-    margin-top: 20px;
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
+    max-width: 900px;
+    /* Set a maximum width for the container */
+    margin: auto;
+    margin-top: 20px;
 }
 
 .table th,
@@ -24,15 +27,6 @@
 
 .center-table .table {
     width: auto;
-    /* Adjust this to fit your design needs */
-}
-
-.container {
-    max-width: 900px;
-    /* Set a maximum width for the container */
-    margin: 0 auto;
-    /* Center the container */
-    padding: 20px;
 }
 
 .dataTables_wrapper .dataTables_length,

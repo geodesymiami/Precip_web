@@ -1,45 +1,44 @@
 {% extends "base.html" %}
-{% block content %}
-<body>
-    <main class="container">
-        <table id="volcanoes-table" class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Dominant Rock Type</th>
-                    <th>Country</th>
-                    <th>Region</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for volcano in volcanoes %}
-                    <tr>
-                        <td><a href="{{ url_for('volcano_detail', volcano_id=volcano.id) }}">{{ volcano.name }}</a></td>
-                        <td>{{ volcano.dominant_rock_type }}</td>
-                        <td>{{ volcano.country }}</td>
-                        <td>{{ volcano.region }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </main>
 
-    <!-- Include jQuery, Bootstrap JS, and DataTables JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#volcanoes-table').DataTable({
-                "paging": false,          // Disable pagination
-                "info": false,            // Disable info display
-                "searching": false,       // Disable search
-                "ordering": true,         // Enable ordering
-                "autoWidth": true        // Disable auto width adjustment
-            });
+{% block title %}Volcanoes List{% endblock %}
+
+{% block content %}
+<table id="volcanoes-table" class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Dominant Rock Type</th>
+            <th>Country</th>
+            <th>Region</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for volcano in volcanoes %}
+            <tr>
+                <td><a href="{{ url_for('volcano_detail', volcano_id=volcano.id) }}">{{ volcano.name }}</a></td>
+                <td>{{ volcano.dominant_rock_type }}</td>
+                <td>{{ volcano.country }}</td>
+                <td>{{ volcano.region }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Include jQuery, Bootstrap JS, and DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#volcanoes-table').DataTable({
+            "paging": false,          // Disable pagination
+            "info": false,            // Disable info display
+            "searching": false,       // Disable search
+            "ordering": true,         // Enable ordering
+            "autoWidth": true        // Disable auto width adjustment
         });
-    </script>
-    <div class="button-container">
-        <a href="/" class="btn btn-custom mt-3">Back to Map</a>
-    </div>
-</body>
+    });
+</script>
+<div class="button-container">
+    <a href="/" class="btn btn-custom mt-3">Back to Map</a>
+</div>
 {% endblock %}

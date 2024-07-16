@@ -2,13 +2,12 @@
     --main-bg-color: #333;
     --main-font: 'Montserrat';
     --header-height: 100px;
+    --footer-height: 75px;
 }
 
-html,
 body {
-    font-family: var(--main-font);
     margin: 0;
-    padding: 0;
+    font-family: var(--main-font);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -23,16 +22,11 @@ main {
 header {
     width: 100%;
     height: var(--header-height);
-    /* color: white; */
-    /* padding: 1em 0; */
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    /* position: relative; */
-    /* background-color: var(--main-bg-color); */
 }
-
 
 .header-content {
     display: flex;
@@ -95,11 +89,12 @@ h1 {
 }
 
 #map {
-    height: 100%;
+    height: calc(100vh - var(--header-height) - var(--footer-height));
     z-index: 2;
 }
 
 footer {
+    height: var(--footer-height);
     width: 100%;
     background-color: var(--main-bg-color);
     color: white;
@@ -137,6 +132,10 @@ footer {
         --header-height: 50px;
     }
 
+    #map {
+        height: calc(100vh - var(--header-height));
+    }
+
     #um-logo {
         display: none;
     }
@@ -163,7 +162,6 @@ footer {
 
     .navbar.active {
         display: flex;
-        /* Show when active */
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -181,44 +179,4 @@ footer {
         display: grid;
         justify-content: right;
     }
-
-
-    footer {
-        display: none;
-    }
 }
-
-/* @media (max-height: 500px) { */
-/*     #um-logo { */
-/*         display: none; */
-/*     } */
-/**/
-/*     .title-and-toggle { */
-/*         flex-direction: row; */
-/*         justify-content: space-between; */
-/*     } */
-/**/
-/**/
-/*     footer { */
-/*         display: none; */
-/*     } */
-/**/
-/*     #navbar-toggle { */
-/*         display: block; */
-/*     } */
-/**/
-/*     .navbar { */
-/*         display: none; */
-/*         flex-direction: column; */
-/*         width: 100%; */
-/*     } */
-/**/
-/*     .navbar-nav { */
-/*         flex-direction: column; */
-/*         align-items: center; */
-/*     } */
-/**/
-/*     .nav-item { */
-/*         display: grid; */
-/*     } */
-/* } */
