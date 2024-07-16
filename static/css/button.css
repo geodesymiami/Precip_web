@@ -14,6 +14,8 @@
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     text-decoration: none;
+    margin: 10px;
+    cursor: grab;
 }
 
 .btn-custom:hover {
@@ -22,24 +24,27 @@
     text-decoration: none;
 }
 
-.btn-custom:focus, .btn-custom.focus {
+.btn-custom.focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
 }
 
-.btn-custom:active, .btn-custom.active {
+.btn-custom.active {
     background-color: #004085;
     border-color: #003069;
 }
 
-.btn-custom.disabled, .btn-custom:disabled {
+.btn-custom:disabled {
     background-color: #007bff;
     border-color: #007bff;
 }
+
 /* Center the button */
 .button-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px; /* Space above the container */
-    margin-bottom: 20px; /* Space below the container */
+    margin-top: 20px;
+    /* Space above the container */
+    margin-bottom: 20px;
+    /* Space below the container */
 }

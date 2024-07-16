@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 # Read Mapbox access token from environment variable
 MAPBOX_ACCESS_TOKEN = os.getenv('MAPBOX_ACCESS_TOKEN')
-PLOT_BASE_URL = 'http://149.165.154.65/data/HDF5EOS/precip_products/precip_plots/'
+PLOT_BASE_URL = 'http://149.165.154.65/data/precip_plots/'
 
 @app.route('/')
 def index():
@@ -17,13 +17,11 @@ with open('data/volcanoes.json') as f:
 
 def fetch_volcano_plots(volcano_id):
     base_url = f'{PLOT_BASE_URL}/{volcano_id}/'
-    rows =[
-        {'Map': f'{base_url}{volcano_id}_map.png',
-         'Annual': f'{base_url}{volcano_id}_annual.png'},
-        {'Strength': f'{base_url}{volcano_id}_strength.png',
-        'Bar': f'{base_url}{volcano_id}_bar.png'}
-    ]
-    return rows
+    plots = {'Map': f'{base_url}{volcano_id}_map',
+             'Annual': f'{base_url}{volcano_id}_annual',
+             'Strength': f'{base_url}{volcano_id}_strength',
+             'Bar': f'{base_url}{volcano_id}_bar'}
+    return plots
 
 @app.route('/volcano/<int:volcano_id>')
 def volcano_detail(volcano_id):
@@ -32,10 +30,9 @@ def volcano_detail(volcano_id):
     if not volcano:
         abort(404, description="Volcano not found")
 
-    # Fetch the plots using the helper function
-    rows = fetch_volcano_plots(volcano['id'])
+    base_url = f'{PLOT_BASE_URL}{volcano_id}/{volcano_id}'
 
-    return render_template('volcano.html', volcano=volcano, rows=rows)
+    return render_template('volcano.html', volcano=volcano, base_url=base_url)
 
 @app.route('/api/volcanoes')
 def get_volcanoes():

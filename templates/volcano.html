@@ -3,16 +3,66 @@
 {% block content %}
 <div class="plot_container">
     <h2>{{ volcano.name }}</h2>
-    {% for plots in rows %}
-    <div class="plot_row">
-        {% for title, plot in plots.items() %}
-        <div class="plot_column">
-            <h4>{{ title }}</h4>
-            <img src="{{ plot }}" alt="{{ volcano.id }}_{{ title.lower() }}_plot">
-        </div>
-        {% endfor %}
+    <div class="button-container">
+        <a onclick="changeImages(1, this)" class="btn btn-custom active">1 bin</a>
+        <a onclick="changeImages(2, this)" class="btn btn-custom">2 bins</a>
+        <a onclick="changeImages(3, this)" class="btn btn-custom">3 bins</a>
+        <a onclick="changeImages(4, this)" class="btn btn-custom">4 bins</a>
     </div>
-    {% endfor %}
+    <div class="plot_row">
+        <div class="plot_column">
+            <h4>Map</h4>
+            <img src="{{ base_url }}_map_bin_1.png" alt="{{ volcano.id }}_map_plot_" onclick="toggleFullScreen(this.src)">
+        </div>
+        <div class="plot_column">
+            <h4>Annual</h4>
+            <img src="{{ base_url }}_annual_bin_1.png" alt="{{ volcano.id }}_annual_plot" id="annual" onclick="toggleFullScreen(this.src)">
+        </div>
+    </div>
+    <div class="plot_row">
+        <div class="plot_column">
+            <h4>Strength</h4>
+            <img src="{{ base_url }}_strength_bin_1.png" alt="{{ volcano.id }}_strength_plot" id="strength" onclick="toggleFullScreen(this.src)">
+        </div>
+        <div class="plot_column">
+            <h4>Bar</h4>
+            <img src="{{ base_url }}_bar_bin_1.png" alt="{{ volcano.id }}_bar_plot" id="bar" onclick="toggleFullScreen(this.src)">
+        </div>
+    </div>
+    <div id=FullImageView onclick="closeFullScreen()">
+        <img id="FullImage"/>
+        <span id="CloseButton" onclick="closeFullScreen()">&times;</span>
+    </div>
+    <script>
+
+        const baseURL = '{{ base_url }}';
+        const volcanoID = '{{ volcano.id }}';
+
+        function changeImages(binNumber, clickedButton) {
+            const styles = ['annual', 'strength', 'bar'];
+            styles.forEach(style => {
+                const img = document.getElementById(style);
+                img.src = `${baseURL}_${style}_bin_${binNumber}.png`;
+                img.alt = `${volcanoID}_${style}_plot_bin_${binNumber}`;
+            });
+            // Remove "active" class from all buttons
+            const buttons = document.querySelectorAll('.btn-custom');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Add "active" class to the clicked button
+            clickedButton.classList.add('active');
+        };
+        function toggleFullScreen(src) {
+            document.getElementById('FullImage').src = src;
+            document.getElementById('FullImageView').style.display = 'flex';
+
+        };
+        function closeFullScreen() {
+            document.getElementById('FullImageView').style.display = 'none';
+        };
+    </script>
     <section id="metadata">
         <h3>Metadata</h3>
         <table class="table center-table">
@@ -78,7 +128,7 @@
             </tr>
         </table>
         <div class="button-container">
-            <a href="/" class="btn btn-custom mt-3">Back to Map</a>
+            <a href="/" class="btn btn-custom">Back to Map</a>
         </div>
     </section>
 </div>
