@@ -1,9 +1,6 @@
-import requests
-from bs4 import BeautifulSoup
 from flask import Flask, render_template, jsonify, abort
 import json
 import os
-from collections import defaultdict
 
 app = Flask(__name__)
 # Read Mapbox access token from environment variable
@@ -20,7 +17,7 @@ with open('data/volcanoes.json') as f:
 
 def fetch_volcano_plots(volcano_id):
     base_url = f'{PLOT_BASE_URL}/{volcano_id}/'
-    rows =[ 
+    rows =[
         {'Map': f'{base_url}{volcano_id}_map.png',
          'Annual': f'{base_url}{volcano_id}_annual.png'},
         {'Strength': f'{base_url}{volcano_id}_strength.png',
@@ -47,7 +44,7 @@ def get_volcanoes():
 @app.route('/volcanoes')
 def volcanoes_list():
     # Assuming `get_volcanoes` is a function that retrieves all volcano data
-    
+
     return render_template('volcanoes_list.html', volcanoes=volcanoes)
 
 if __name__ == '__main__':
