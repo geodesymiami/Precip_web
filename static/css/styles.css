@@ -19,6 +19,7 @@ main {
     background-color: white;
 }
 
+
 header {
     width: 100%;
     height: var(--header-height);
@@ -92,6 +93,19 @@ h1 {
     height: calc(100vh - var(--header-height) - var(--footer-height));
     z-index: 2;
 }
+
+.text-box {
+    /* position: absolute; */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    min-height: calc(100% - var(--header-height) - var(--footer-height));
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
 
 footer {
     height: var(--footer-height);
