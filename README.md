@@ -24,9 +24,14 @@ python run.py
 - [x] Add a map to the website
 - [x] Parse data from the [volcano list](https://github.com/geodesymiami/precip/blob/main/src/precip/Holocene_Volcanoes_precip_cfg..xlsx)
 - [x] Run [geodesymiami/Precip](https://github.com/geodesymiami/precip) on Merapi, hosted on [jetstream](http://149.165.154.65/data/HDF5EOS/precip_products/Merapi/)
-- [ ] Set up cron job to automatically run precip plots
-- [ ] Make basic tests (pytest)
-- [ ] Add an explanation on homepage
+- [ ] Set up cron job to automatically run precip plots (0 0 1 * * run_plot_precipitation_all.py)
+- [ ] fix title (mobile)
+- [ ] remove automatic scaling
+- [ ] add magnify icon for image hover
+- [ ] add esc on image zoom to escape
+- [ ] fix citations in about
+- [ ] remove designed by kawan
+- [ ] add no bin button
 
 ### WEB DESIGN TODOS:
 - [x] Use Mapbox for satellite imagery map
