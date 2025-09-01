@@ -4,7 +4,7 @@ import os
 import pandas as pd
 import json
 
-FILE_PATH = os.environ.get('PRECIP_HOME')
+FILE_PATH = os.environ.get('PRECIP_WEB_HOME')
 FILE_PATH += '/src/precip/Holocene_Volcanoes_precip_cfg..xlsx'
 df = pd.read_excel(FILE_PATH, skiprows=1)
 

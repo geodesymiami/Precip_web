@@ -7,14 +7,14 @@ app = Flask(__name__)
 
 MAPBOX_ACCESS_TOKEN = os.getenv('MAPBOX_ACCESS_TOKEN')
 PLOT_BASE_URL = 'http://149.165.155.152/data/precip_plots/'
-PRECIP_HOME = os.getenv('PRECIP_HOME')
+PRECIP_WEB_HOME = os.getenv('PRECIP_WEB_HOME')
 
 @app.route('/')
 def index():
     return render_template('index.html', mapbox_access_token=MAPBOX_ACCESS_TOKEN)
 
 # Load volcano data
-with open(f'{PRECIP_HOME}/data/volcanoes.json') as f:
+with open(f'{PRECIP_WEB_HOME}/data/volcanoes.json') as f:
     volcanoes = json.load(f)['volcanoes']
 
 def fetch_volcano_plots(volcano_id):
