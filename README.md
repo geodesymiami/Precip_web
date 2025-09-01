@@ -2,9 +2,14 @@
 Flask based website to display precipitation plots from [geodesymiami/Precip](https://github.com/geodesymiami/precip).
 
 ## Installation
-1. Clone the repository
-2. Install the required packages
+1. Go to `/var/www/` and clone the repository:
+```
+git clone git@github.com:geodesymiami/precip_web
+``` 
+2. Install the required packages into an virtual environment:
 ```bash
+python -m venv web_env
+source web_env/bin/activate
 pip install -r requirements.txt
 ```
 3. Make sure the MAPBOX_ACCESS_TOKEN is set in your environment variables
@@ -13,6 +18,7 @@ export MAPBOX_ACCESS_TOKEN=<your_mapbox_access_token>
 ```
 4. Run the website
 ```bash
+cd precip_web/
 python run.py
 ```
 5. Open Website at the given address (chrome/safari)
