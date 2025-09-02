@@ -5,9 +5,9 @@ import os
 app = Flask(__name__)
 # Read Mapbox access token from environment variable
 
-MAPBOX_ACCESS_TOKEN = os.getenv('MAPBOX_ACCESS_TOKEN')
+MAPBOX_ACCESS_TOKEN = os.getenv('MAPBOX_ACCESS_TOKEN','YourTokenHere')
 PLOT_BASE_URL = 'http://149.165.155.152/data/precip_plots/'
-PRECIP_WEB_HOME = os.getenv('PRECIP_WEB_HOME')
+PRECIP_WEB_HOME = os.getenv('PRECIP_WEB_HOME', os.path.dirname(__file__))
 
 @app.route('/')
 def index():
