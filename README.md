@@ -33,10 +33,8 @@ curl -s http://127.0.0.1:5000
 7. On a remote server, to configure Apache create `/etc/apache2/sites-available/precip_web.conf` containing
 ```
 <VirtualHost *:80>
-    ServerName 149.165.155.152
 
-    # IMPORTANT: Alias directives must come BEFORE WSGIScriptAlias
-    # to prevent Flask from catching these URLs
+    # Alias directives must come BEFORE WSGIScriptAlias to prevent Flask from catching these URLs
 
     # Serve /data/HDF5EOS/ as static files (bypass WSGI/Flask)
     Alias /data/HDF5EOS/ /data/HDF5EOS/
