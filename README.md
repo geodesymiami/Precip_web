@@ -12,10 +12,7 @@ python -m venv web_env
 source web_env/bin/activate
 pip install -r requirements.txt
 ```
-3. Make sure the MAPBOX_ACCESS_TOKEN is set in `mapbox_access_token.env`:
-```
-cp ~/accounts/mapbox_access_token.env  .
-```
+3. Make sure the MAPBOX_ACCESS_TOKEN is set in `mapbox_access_token.env`. If it exists it will use `~accounts/mapbox_access_token.env`.
 
 5. Run the website
 ```
