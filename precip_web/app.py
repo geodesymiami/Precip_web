@@ -1,11 +1,30 @@
 from flask import Flask, render_template, jsonify, abort
 import json
 import os
+import sys
 
 app = Flask(__name__)
 # Read Mapbox access token from environment variable
 
-MAPBOX_ACCESS_TOKEN = os.getenv('MAPBOX_ACCESS_TOKEN','YourTokenHere')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+TOKEN_FILE = os.path.join(BASE_DIR, "mapbox_access_token.env")
+
+def load_mapbox_token():
+    if not os.path.exists(TOKEN_FILE):
+        raise RuntimeError( f"MAPBOX token file missing: {TOKEN_FILE}")
+
+    namespace = {}
+    with open(TOKEN_FILE, "r") as f:
+        exec(f.read(), namespace)
+    token = namespace.get("mapbox_access_token", "").strip()
+
+    if not token or "YourTokenHere" in token:
+        raise RuntimeError( "MAPBOX access token not set (still placeholder)")
+
+    return token
+
+MAPBOX_ACCESS_TOKEN = load_mapbox_token()
+
 PLOT_BASE_URL = 'http://149.165.155.152/data/precip_plots/'
 PRECIP_WEB_HOME = os.getenv('PRECIP_WEB_HOME', os.path.dirname(__file__))
 
