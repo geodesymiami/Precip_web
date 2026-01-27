@@ -1,4 +1,3 @@
-(minsar) //preceipvm2/var/www/Precip_web/precip_web[1191] ls
 import sys
 import os
 
