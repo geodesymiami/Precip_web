@@ -5,7 +5,7 @@ Flask based website to display precipitation plots from [geodesymiami/Precip](ht
 1. Go to `/var/www/` and clone the repository:
 ```
 git clone git@github.com:geodesymiami/precip_web
-``` 
+```
 2. Install the required packages into an virtual environment:
 ```bash
 python -m venv web_env
@@ -15,7 +15,7 @@ pip install -r requirements.txt
 3. Make sure the MAPBOX_ACCESS_TOKEN is set in `mapbox_access_token.env`:
 ```
 cp ~/accounts/mapbox_access_token.env  .
-``` 
+```
 
 5. Run the website
 ```
@@ -26,7 +26,7 @@ python run.py
 ```
 127.0.0.1:5000
 ```
-or check using 
+or check using
 ```
 curl -s http://127.0.0.1:5000
 ```
@@ -37,7 +37,7 @@ curl -s http://127.0.0.1:5000
 
     # IMPORTANT: Alias directives must come BEFORE WSGIScriptAlias
     # to prevent Flask from catching these URLs
-    
+
     # Serve /data/HDF5EOS/ as static files (bypass WSGI/Flask)
     Alias /data/HDF5EOS/ /data/HDF5EOS/
     <Directory /data/HDF5EOS/>
@@ -55,7 +55,7 @@ curl -s http://127.0.0.1:5000
     # Flask/WSGI configuration (must come AFTER Alias directives)
     WSGIDaemonProcess precip_web python-home=/var/www/Precip_web/web_env python-path=/var/www/Precip_web
     WSGIProcessGroup precip_web
-    WSGIScriptAlias / /var/www/Precip_web/precip_web.wsgi
+    WSGIScriptAlias / /var/www/Precip_web/web.wsgi
 
     <Directory /var/www/Precip_web/>
         Require all granted
