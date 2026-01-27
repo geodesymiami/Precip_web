@@ -64,7 +64,10 @@ curl -s http://127.0.0.1:5000
     ErrorLog ${APACHE_LOG_DIR}/precip_web_error.log
     CustomLog ${APACHE_LOG_DIR}/precip_web_access.log combined
 </VirtualHost>
-
+```
+or
+```
+sudo cp precip_web.conf /etc/apache2/sites-available/
 ```
 8. Start Apache using:
 ```
