@@ -8,17 +8,12 @@ app = Flask(__name__)
 
 APP_DIR = os.path.dirname(__file__)
 
-PRIMARY_TOKEN_FILE = os.path.expanduser( "~/accounts/mapbox_access_token.env")
-FALLBACK_TOKEN_FILE = os.path.join( os.path.dirname(APP_DIR), "mapbox_access_token.env")
+TOKEN_FILE = os.path.join( os.path.dirname(APP_DIR), "mapbox_access_token.env")
 
 def load_mapbox_token():
-    if os.path.exists(PRIMARY_TOKEN_FILE):
-        token_file = PRIMARY_TOKEN_FILE
-    else:
-        token_file = FALLBACK_TOKEN_FILE
 
     namespace = {}
-    with open(token_file, "r") as f:
+    with open(TOKEN_FILE, "r") as f:
         exec(f.read(), namespace)
     token = namespace.get("mapbox_access_token", "").strip()
 
